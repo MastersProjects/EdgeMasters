@@ -45,10 +45,10 @@ public class PlayView {
 		gameStatPanel.add(scrollPane);
 		
 		rankingTable = new JTable();
-		scrollPane.setViewportView(rankingTable);
-		
-		
+		scrollPane.setViewportView(rankingTable);		
 		
 		menuViewFrame.setVisible(true);
+		
+		((GamePanel) gamePanel).start();
 	}
 }

@@ -1,12 +1,7 @@
 package ch.masters.edgemasters.view;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-
 import javax.swing.JPanel;
-
 import ch.masters.edgemasters.model.Point;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -20,17 +15,17 @@ public class GamePanel extends JPanel implements Runnable {
 	
     private final int DELAY = 15;
     
-    int x = 1;
-
+    private int paintDelay = 1;
 
     private Thread animator;
        
     private boolean running = true;
 
-    public GamePanel() {
-
+    public void start() {
         initBoard();
     }
+    
+    
 
 
 
@@ -78,12 +73,12 @@ public class GamePanel extends JPanel implements Runnable {
     public void paint(Graphics g) {
     	
     	//for no painting error
-    	if(x<=4){
+    	if(paintDelay<=4){
     		super.paint(g);
     	}
         
         point.paint(g);
-        x = x + 1;
+        paintDelay++;
         
         
      
