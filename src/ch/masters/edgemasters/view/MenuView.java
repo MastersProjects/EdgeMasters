@@ -1,13 +1,18 @@
 package ch.masters.edgemasters.view;
 
+import java.awt.Font;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTable;
-import java.awt.Font;
+import javax.swing.table.DefaultTableModel;
+
+import ch.masters.edgemasters.actionlistener.MenuViewActionlistener;
+import ch.masters.edgemasters.model.Game;
 
 public class MenuView extends JFrame{
 	
@@ -31,6 +36,7 @@ public class MenuView extends JFrame{
 	//Table
 	private JTable playersTable;
 	
+	private Game game;
 	
 	public MenuView() {
 		try {
@@ -39,7 +45,7 @@ public class MenuView extends JFrame{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		game = new Game(); 
 		menuViewFrame = new JFrame();
 		menuViewFrame.setTitle("Menu - Edgefever");
 		menuViewFrame.setBounds(100, 100, 895, 560);
@@ -49,21 +55,18 @@ public class MenuView extends JFrame{
 		playersTableLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		playersTableLabel.setBounds(206, 156, 110, 22);
 		menuViewFrame.getContentPane().add(playersTableLabel);
-		
-		addPlayerTextField = new JTextField();
-		addPlayerTextField.setText("new Player");
-		addPlayerTextField.setBounds(278, 89, 186, 20);
-		menuViewFrame.getContentPane().add(addPlayerTextField);
-		addPlayerTextField.setColumns(10);
+			
+		goButton = new JButton("GO!");
 		
 		addPlayerButton = new JButton("Add");
+		addPlayerButton.addActionListener(new MenuViewActionlistener("Add", this.addPlayerTextField, this.game, this.goButton));
 		addPlayerButton.setFont(new Font("Tahoma", Font.BOLD, 12));		
 		addPlayerButton.setBounds(489, 87, 89, 23);
 		menuViewFrame.getContentPane().add(addPlayerButton);
 		
-		goButton = new JButton("GO!");
 		goButton.setFont(new Font("Tahoma", Font.BOLD, 16));
 		goButton.setBounds(382, 441, 120, 41);
+		goButton.setEnabled(false);
 		menuViewFrame.getContentPane().add(goButton);
 		
 		playersTable = new JTable();
