@@ -13,11 +13,15 @@ public class Game {
 	}
 	
 	public void paint(Graphics g){
-		
+		for(Player player : players){
+			player.paint(g);
+		}
 	}
 	
 	public void update(){
-		
+		for(Player player : players){
+			player.update();
+		}
 	}
 
 	public int getRound() {

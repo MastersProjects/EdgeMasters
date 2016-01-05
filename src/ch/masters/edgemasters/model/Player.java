@@ -11,18 +11,18 @@ public class Player {
 	private String color;
 	private int points;
 	
-	private PlayerPoint playerPoints;
+	private PlayerPoint playerPoint;
 	
 	public Player(){
-		playerPoints = new PlayerPoint();
+		playerPoint = new PlayerPoint();
 	}
 	
 	public void paint(Graphics g){
-		
+		playerPoint.paint(g);
 	}
 	
 	public void update(){
-		
+		playerPoint.update();
 	}
 
 	public String getName() {
@@ -49,12 +49,12 @@ public class Player {
 		this.points = points;
 	}
 
-	public PlayerPoint getPlayerPoints() {
-		return playerPoints;
+	public PlayerPoint getPlayerPoint() {
+		return playerPoint;
 	}
 
-	public void setPlayerPoints(PlayerPoint playerPoints) {
-		this.playerPoints = playerPoints;
+	public void setPlayerPoint(PlayerPoint playerPoints) {
+		this.playerPoint = playerPoints;
 	}
 	
 	

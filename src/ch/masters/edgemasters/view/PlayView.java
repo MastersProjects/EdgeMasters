@@ -1,24 +1,35 @@
 package ch.masters.edgemasters.view;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+
+import ch.masters.edgemasters.model.Game;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class PlayView {
+public class PlayView implements KeyListener{
 
 	private JPanel gamePanel;
 	private JPanel gameStatPanel;
 	
-	private JFrame menuViewFrame;
+	private JFrame playViewFrame;
 	private JTable rankingTable;
 	
 	private JScrollPane scrollPane;
+	
+	private Game game;
 		
 	
-	public PlayView() {
+	public PlayView(Game game) {
+		
+		this.setGame(game);
+		
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
@@ -26,18 +37,24 @@ public class PlayView {
 			e.printStackTrace();
 		}
 		
-		menuViewFrame = new JFrame();
-		menuViewFrame.setTitle("Play - Edgefever");
-		menuViewFrame.setBounds(100, 100, 895, 560);
-		menuViewFrame.getContentPane().setLayout(null);
+		
+		
+		playViewFrame = new JFrame();
+		playViewFrame.setTitle("Play - Edgefever");
+		playViewFrame.setBounds(100, 100, 895, 560);
+		playViewFrame.getContentPane().setLayout(null);
+		
+		playViewFrame.addKeyListener(this);
+		playViewFrame.setFocusable(true);
+		playViewFrame.setFocusTraversalKeysEnabled(false);
 		
 		gamePanel = new GamePanel();
 		gamePanel.setBounds(377, 20, 480, 480);
-		menuViewFrame.getContentPane().add(gamePanel);
+		playViewFrame.getContentPane().add(gamePanel);
 		
 		gameStatPanel = new JPanel();
 		gameStatPanel.setBounds(21, 20, 268, 480);
-		menuViewFrame.getContentPane().add(gameStatPanel);
+		playViewFrame.getContentPane().add(gameStatPanel);
 		gameStatPanel.setLayout(null);
 		
 		scrollPane = new JScrollPane();
@@ -47,8 +64,43 @@ public class PlayView {
 		rankingTable = new JTable();
 		scrollPane.setViewportView(rankingTable);		
 		
-		menuViewFrame.setVisible(true);
+		playViewFrame.setVisible(true);
 		
-		((GamePanel) gamePanel).start();
+		((GamePanel) gamePanel).start(game);
+	
 	}
+	
+
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		((GamePanel) gamePanel).keyPressed(e);
+		
+		
+	}
+
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		((GamePanel) gamePanel).keyReleased(e);
+		
+	}
+
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		((GamePanel) gamePanel).keyTyped(e);
+		
+	}
+
+
+	public Game getGame() {
+		return game;
+	}
+
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
 }

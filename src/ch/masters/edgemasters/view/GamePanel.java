@@ -2,6 +2,10 @@ package ch.masters.edgemasters.view;
 
 import java.awt.Graphics;
 import javax.swing.JPanel;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import ch.masters.edgemasters.model.Game;
 
 
 public class GamePanel extends JPanel implements Runnable {
@@ -11,7 +15,7 @@ public class GamePanel extends JPanel implements Runnable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-
+	private Game game;
 	
     private final int DELAY = 15;
     
@@ -21,16 +25,19 @@ public class GamePanel extends JPanel implements Runnable {
        
     private boolean running = true;
 
-    public void start() {
+    public void start(Game game) {
+    	setGame(game);
         initBoard();
+        
     }
     
     
-
+    
 
 
     private void initBoard() {
-        setDoubleBuffered(true);		
+        setDoubleBuffered(true);
+        
     }
     
     @Override
@@ -65,7 +72,9 @@ public class GamePanel extends JPanel implements Runnable {
 
 
 	private void update() {
-
+		if(game != null){
+			game.update();
+		}
 		
 	}
 	
@@ -77,6 +86,7 @@ public class GamePanel extends JPanel implements Runnable {
     		super.paint(g);
     	}
         
+    	game.paint(g);
 
         paintDelay++;
         
@@ -91,4 +101,46 @@ public class GamePanel extends JPanel implements Runnable {
         animator = new Thread(this);
         animator.start();
     }
+	
+
+	public void keyPressed(KeyEvent e) {
+		System.out.println("Char: " + e.getKeyChar());
+		System.out.println("Code: " + e.getKeyCode());
+		if(e.getKeyCode() == 87){
+			System.out.println("LAUF");
+		}
+		
+	}
+
+
+	public void keyReleased(KeyEvent e) {
+		
+		
+	}
+
+	public void keyTyped(KeyEvent e) {
+		
+		
+	}
+
+
+
+
+	public Game getGame() {
+		return game;
+	}
+
+
+
+
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
+
+
+
+
+
 }
