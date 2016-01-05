@@ -2,7 +2,7 @@ package ch.masters.edgemasters.view;
 
 import java.awt.Graphics;
 import javax.swing.JPanel;
-import ch.masters.edgemasters.model.Point;
+
 
 public class GamePanel extends JPanel implements Runnable {
 
@@ -11,7 +11,7 @@ public class GamePanel extends JPanel implements Runnable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Point point= new Point();
+
 	
     private final int DELAY = 15;
     
@@ -65,7 +65,7 @@ public class GamePanel extends JPanel implements Runnable {
 
 
 	private void update() {
-		point.update();
+
 		
 	}
 	
@@ -77,7 +77,7 @@ public class GamePanel extends JPanel implements Runnable {
     		super.paint(g);
     	}
         
-        point.paint(g);
+
         paintDelay++;
         
         

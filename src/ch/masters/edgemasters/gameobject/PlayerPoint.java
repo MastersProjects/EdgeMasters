@@ -1,5 +1,33 @@
 package ch.masters.edgemasters.gameobject;
 
-public class PlayerPoint {
+import java.awt.Graphics;
 
+public class PlayerPoint {
+	
+	private int x;
+	private int y;
+	
+	public void paint(Graphics g){
+		
+	}
+	
+	public void update(){
+		
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
 }
