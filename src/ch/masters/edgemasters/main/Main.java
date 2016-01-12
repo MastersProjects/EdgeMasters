@@ -12,8 +12,8 @@ public class Main {
 		Game game = new Game();
 		Player player = new Player();
 		game.getPlayers().add(player);
-		new PlayView(game);
-//		new MenuView();
+//		new PlayView(game);
+		new MenuView();
 	}
 
 }

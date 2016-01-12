@@ -58,6 +58,12 @@ public class MenuView extends JFrame{
 			
 		goButton = new JButton("GO!");
 		
+		addPlayerTextField = new JTextField();
+  		addPlayerTextField.setText("new Player");
+ 		addPlayerTextField.setBounds(278, 89, 186, 20);
+  		menuViewFrame.getContentPane().add(addPlayerTextField);
+  		addPlayerTextField.setColumns(10);
+  		
 		addPlayerButton = new JButton("Add");
 		addPlayerButton.addActionListener(new MenuViewActionlistener("Add", this.addPlayerTextField, this.game, this.goButton));
 		addPlayerButton.setFont(new Font("Tahoma", Font.BOLD, 12));		
